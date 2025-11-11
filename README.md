@@ -1,29 +1,12 @@
-# Texture Complexity-Based Steganography for Unity Engine
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17578068.svg)](https://doi.org/10.5281/zenodo.17578068)
-
-**Note**: This code repository is directly related to the manuscript submitted to The Visual Computer journal. If you use this code, please cite the relevant manuscript.
-
-## Environment Requirements
-- Unity 2022.3 or higher
+## Runtime Environment
+Unity 2022.3 and above
 
 ## Algorithm Description
+This algorithm is designed to embed secret information, which can be converted into binary data (such as files packaged via AssetBundle, Json files, files in the streamingAssets directory, etc.), into model textures. It enhances the security of data storage without compromising the visual appearance of the textures.
 
-This algorithm provides a data security storage solution for Unity applications by embedding binary data files (including AssetBundle packages, JSON configuration files, resources in StreamingAssets directory, etc.) as secret information into model textures. It significantly enhances data storage security while preserving the visual quality of textures.
+The algorithm employs IWT (Integer Wavelet Transform) frequency domain transformation for the secret information to improve stealthiness and utilizes image edges as the core embedding area to evade detection by steganalysis algorithms. Compared to other algorithms, this method ensures higher security while expanding embedding capacity to meet the demands of embedding large data files in Unity.
 
-### Key Technical Features:
-- **Frequency Domain Encryption**: Utilizes Integer Wavelet Transform (IWT) for frequency domain processing of secret information, improving steganographic security
-- **Adaptive Embedding**: Dynamically adjusts data embedding intensity and position based on image edge complexity
-- **High Capacity Support**: Optimized embedding capacity to accommodate large Unity resource files
-- **Anti-Detection Capability**: Prioritizes texture-complex regions for embedding, effectively evading steganalysis detection
-
-## Usage Instructions
-
-### Installation Steps
-1. Copy the `Script` folder to your `UnityProjectPath/Assets` directory
-2. Recompile the project in Unity Editor
-
-### Core API
-```csharp
-// Embed binary data into multiple textures
-Steganography.Embed(byte[] data, Texture2D[] textures, uint seed)
+## Usage
+1. Add the Script folder to your "Unity Project Path/Assets" directory.
+2. Call the `Steganography.Embed(byte[] data, Texture2D[] textures, uint seed)` method to embed the binary parameter `data` into the texture parameters `textures`. The `seed` parameter serves as the secret key.
+3. Call the `Steganography.Extract(Texture2D[] textures, uint seed)` method to extract the binary secret information from the stego-texture parameters `textures`. The `seed` parameter serves as the secret key.
