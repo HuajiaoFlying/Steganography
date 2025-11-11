@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17578068.svg)](https://doi.org/10.5281/zenodo.17578068)
 ## Runtime Environment
 Unity 2022.3 and above
 
